@@ -1,0 +1,6 @@
+version: '3'
+services: 
+  web:
+    image: kwazi1984/dotnet-k8s:v2
+    ports:
+      - "8800:80"
