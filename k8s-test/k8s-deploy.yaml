@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dotnet-k8s
-        image: kwazi1984/dotnet-k8s:v2
+        image: kwazi1984/dotnet-k8s:v3
         ports:
         - containerPort: 80
           name: web
