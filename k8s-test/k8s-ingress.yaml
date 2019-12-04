@@ -6,7 +6,7 @@ metadata:
   name: dotnet-k8s-ingress
 spec:
   rules:
-  - host: dotnet-k8s.10.0.2.15.nip.io
+  - host: dotnet-test.10.0.2.15.nip.io
     http:
       paths:
       - backend:
