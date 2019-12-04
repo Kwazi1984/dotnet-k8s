@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-k8s
+  labels:
+    app: dotnet-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-k8s
+  template:
+    metadata:
+      labels:
+        app: dotnet-k8s
+    spec:
+      containers:
+      - name: dotnet-k8s
+        image: kwazi1984/dotnet-k8s:v3
+        ports:
+        - containerPort: 80
+          name: web
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 3
+        
+
+#        # custom app.ini
+#        # WARNING - this makes configuration impossible from web ingerface!
+#        volumeMounts:
+#        - name: custom-conf
+#          mountPath: /data/gitea/conf/
+#        
+#      volumes:
+#      - name: custom-conf
+#        configMap:
+#          name: gitea-config-file
