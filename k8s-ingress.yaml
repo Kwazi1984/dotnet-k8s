@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  name: dotnet-k8s-ingress
+spec:
+  rules:
+  - host: dotnet-k8s.10.0.2.15.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: dotnet-k8s
+          servicePort: 80
+        path: /

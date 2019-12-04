@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dotnet-k8s
+  name: dotnet-k8s
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    name: web
+
+  selector:
+    app: dotnet-k8s
