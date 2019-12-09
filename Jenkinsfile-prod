@@ -28,7 +28,7 @@ pipeline {
                         try{
                             sh "ssh ubuntu@10.0.2.15 kubectl apply -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-prod/. -n dotnet-prod"
                         }catch(error){
-                            sh "ssh ubuntu@10.0.2.15 kubectl create -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-prod/. n dotnet-prod"
+                            sh "ssh ubuntu@10.0.2.15 kubectl create -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-prod/. -n dotnet-prod"
                         }
                     }
                 }        
