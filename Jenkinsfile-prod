@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Deploy to Kubernetes'){
             steps{
-                sh "chmod +x k8s-test/changeTag.sh"
-                sh "./k8s-test/changeTag.sh ${DOCKER_TAG}"
+                sh "chmod +x k8s-prod/changeTag.sh"
+                sh "./k8s-prod/changeTag.sh ${DOCKER_TAG}"
                 sshagent(['kops-machine']) {
                     //sh "ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 kubectl version"
                     sh "scp -o StrictHostKeyChecking=no k8s-prod/k8s-deploy.yaml k8s-prod/k8s-svc-clusterip.yaml k8s-prod/k8s-ingress.yaml ubuntu@10.0.2.15:/home/ubuntu/jenkinks-k8s-ssh/dotnet-prod/"
