@@ -26,9 +26,9 @@ pipeline {
                     sh "scp -o StrictHostKeyChecking=no k8s-test/k8s-deploy.yaml k8s-test/k8s-svc-clusterip.yaml k8s-test/k8s-ingress.yaml ubuntu@10.0.2.15:/home/ubuntu/jenkinks-k8s-ssh/dotnet-test/"
                     script{
                         try{
-                            sh "ssh ubuntu@10.0.2.15 kubectl apply -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-test/. -n dotnet-test"
+                            sh "ssh ubuntu@10.0.2.15 kubectl apply -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-test/. -n dotnet-prod"
                         }catch(error){
-                            sh "ssh ubuntu@10.0.2.15 kubectl create -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-test/. n dotnet-test"
+                            sh "ssh ubuntu@10.0.2.15 kubectl create -f /home/ubuntu/jenkinks-k8s-ssh/dotnet-test/. n dotnet-prod"
                         }
                     }
                 }        
