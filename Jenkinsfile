@@ -23,12 +23,12 @@ pipeline {
                 sh "./k8s-test/changeTag.sh ${DOCKER_TAG}"
                 sshagent(['kops-machine']) {
                     //sh "ssh -o StrictHostKeyChecking=no ubuntu@10.0.2.15 kubectl version"
-                    sh "scp -o StrictHostKeyChecking=no k8s-test/k8s-deploy.yaml k8s-test/k8s-svc-clusterip.yaml k8s-test/k8s-ingress.yaml ubuntu@10.0.2.15:/home/ubuntu/dotet-test-k8s-ssh/"
+                    sh "scp -o StrictHostKeyChecking=no k8s-test/k8s-deploy.yaml k8s-test/k8s-svc-clusterip.yaml k8s-test/k8s-ingress.yaml ubuntu@10.0.2.15:/home/ubuntu/jenkinks-k8s-ssh/dotet-test/"
                     script{
                         try{
-                            sh "ssh ubuntu@10.0.2.15 kubectl apply -f /home/ubuntu/dotet-test-k8s-ssh."
+                            sh "ssh ubuntu@10.0.2.15 kubectl apply -f /home/ubuntu/jenkinks-k8s-ssh/dotet-test/. -n dotnet-test"
                         }catch(error){
-                            sh "ssh ubuntu@10.0.2.15 kubectl create -f /home/ubuntu/dotet-test-k8s-ssh/."
+                            sh "ssh ubuntu@10.0.2.15 kubectl create -f /home/ubuntu/jenkinks-k8s-ssh/dotet-test/. n dotnet-test"
                         }
                     }
                 }        
