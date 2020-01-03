@@ -4,7 +4,7 @@ pipeline {
         DOCKER_TAG = getDockerTag()
     }
     stages{
-        stage('Build Docker Image'){
+        stage('Build Docker Image') {
             steps{
                 sh "docker build . -t kwazi1984/dotnet-k8s:${DOCKER_TAG} "
             }
